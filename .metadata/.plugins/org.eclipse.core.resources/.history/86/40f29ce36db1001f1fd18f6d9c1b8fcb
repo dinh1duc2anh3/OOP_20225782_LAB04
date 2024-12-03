@@ -20,7 +20,7 @@ public class CartTest {
         cd.addTrack(new Track("Beat It", 5));
         cd.setLength();
         
-        // Thêm book vào Cart
+        // Thêm book vào Carty
         Book book = new Book("Effective Java", "Programming", 45.0f, Arrays.asList("Joshua Bloch"));
         
         // Create some DigitalVideoDisc objects
