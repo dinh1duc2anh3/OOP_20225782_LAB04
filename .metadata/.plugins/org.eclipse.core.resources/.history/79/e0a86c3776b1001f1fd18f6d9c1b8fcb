@@ -1,0 +1,31 @@
+package hust.soict.ite6.oop.aims.media;
+
+public abstract class Disc extends Media {
+    private String director; // Director of the media (e.g., for DVD and CD)
+    private int length;      // Length of the media in minutes
+
+    // Constructor
+    public Disc(String title, String category, float cost, int length, String director) {
+        super(title, category, cost); // Call the constructor of Media
+        this.director = director;
+        this.length = length;
+    }
+
+    public String getDirector() {
+        return director;
+    }
+
+    public int getLength() {
+        return length;
+    }
+
+    @Override
+    public void displayDetails() {
+        super.displayDetails(); // Call the parent Media's details
+        System.out.println("Director: " + this.director);
+        System.out.println("Length: " + this.length + " minutes");
+    }
+
+    // Abstract method for Disc-specific details
+    public abstract void play();
+}

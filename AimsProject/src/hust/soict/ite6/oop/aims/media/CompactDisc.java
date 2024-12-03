@@ -1,0 +1,45 @@
+package hust.soict.ite6.oop.aims.media;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class CompactDisc extends Disc implements Playable {
+    private String artist;
+    private List<Track> tracks = new ArrayList<>();
+
+    public CompactDisc( String title, String category, float cost, String artist, String director,int length) {
+        super(title, category, cost, director,length);
+        this.artist = artist;
+        System.out.println("CD " + title + " : id = "+this.getId());
+    }
+
+    public void addTrack(Track track) {
+        tracks.add(track);
+    }
+
+    public int getLength() {
+        return tracks.stream().mapToInt(Track::getLength).sum();
+    }
+    
+
+    @Override
+    public void displayDetails() {
+        System.out.println("CD Title: " + getTitle());
+        System.out.println("CD Id: " + getId());
+        System.out.println("Category: " + getCategory());
+        System.out.println("Director: " + getDirector());
+        System.out.println("CD Length: " + getLength() + " minutes");
+        System.out.println("Cost: $" + getCost());
+        for (Track track : tracks) {
+            System.out.println("- " + track.getTitle() + " (" + track.getLength() + " minutes)");
+        }
+    }
+
+    @Override
+    public void play() {
+        System.out.println("Playing CD: " + getTitle() + " (" + getLength() + " minutes)");
+        for (Track track : tracks) {
+            track.play();
+        }
+    }
+}

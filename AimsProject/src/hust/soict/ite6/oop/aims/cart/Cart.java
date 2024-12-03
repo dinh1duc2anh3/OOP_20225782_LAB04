@@ -30,8 +30,12 @@ public class Cart {
 	public void removeMedia(Media media) {
 		System.out.println("***********************REMOVE***********************");
 		if (itemsOrdered.remove(media)) {
+			itemsOrdered.remove(media);
             System.out.println("The media " + media.getTitle() + " has been removed.");
         }
+		else {
+			System.out.println("The media " + media.getTitle() + " is not in the cart");
+		}
 	}
 	
 	

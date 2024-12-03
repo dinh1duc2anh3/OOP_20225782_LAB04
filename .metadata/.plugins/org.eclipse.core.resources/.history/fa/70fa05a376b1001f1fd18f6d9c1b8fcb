@@ -1,0 +1,32 @@
+package hust.soict.ite6.oop.aims.media;
+
+public class DigitalVideoDisc extends Disc implements Playable {
+    private String director;
+    private int length;
+    private int id;
+
+    public DigitalVideoDisc( String title, String category, float cost, String director, int length) {
+        super( title, category, cost, director, length);
+        nbMedia++;
+        this.id = nbMedia;
+    }
+
+    @Override
+    public void displayDetails() {
+        System.out.println("DVD Title: " + getTitle());
+        System.out.println("Category: " + getCategory());
+        System.out.println("Director: " + director);
+        System.out.println("DVD Length: " + length + " minutes");
+        System.out.println("Cost: $" + getCost());
+    }
+
+    @Override
+    public void play() {
+        if (length > 0) {
+            System.out.println("Playing DVD: " + getTitle() + " (" + length + " minutes)");
+        } else {
+            System.out.println("DVD " + getTitle() + " cannot be played (invalid length).");
+        }
+    }
+}
+

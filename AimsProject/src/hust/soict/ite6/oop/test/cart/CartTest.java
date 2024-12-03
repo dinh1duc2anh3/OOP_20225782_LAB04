@@ -14,11 +14,11 @@ public class CartTest {
         Cart cart = new Cart();
         
         // Thêm CD vào Cart	
-        CompactDisc cd = new CompactDisc("Thriller", "Pop", 15.0f, "Michael Jackson",0, "Quincy Jones");
+        CompactDisc cd = new CompactDisc("Thriller", "Pop", 15.0f, "Michael Jackson","Quincy Jones", 0);
         cd.addTrack(new Track("Wanna Be Startin' Somethin'", 6));
         cd.addTrack(new Track("Thriller", 7));
         cd.addTrack(new Track("Beat It", 5));
-        cd.setLength();
+        cd.setLength(cd.getLength());
         
         // Thêm book vào Cart
         Book book = new Book("Effective Java", "Programming", 45.0f, Arrays.asList("Joshua Bloch"));

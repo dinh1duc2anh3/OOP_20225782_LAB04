@@ -33,7 +33,7 @@ public class TestPassingParameter {
 //	}
 //	
 	public static void changeTitle(DigitalVideoDisc dvd , String title ) {
-		dvd.setTitle(title);
+		
 		
 	}
 	

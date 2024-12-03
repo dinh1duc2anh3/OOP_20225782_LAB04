@@ -18,11 +18,11 @@ public class Aims {
         Book book = new Book("Effective Java", "Programming", 45.0f, Arrays.asList("Joshua Bloch"));
         
         // Thêm CD vào Store	
-        CompactDisc cd = new CompactDisc("Thriller", "Pop", 15.0f, "Michael Jackson",0, "Quincy Jones");
+        CompactDisc cd = new CompactDisc("Thriller", "Pop", 15.0f, "Michael Jackson","Quincy Jones", 0);
         cd.addTrack(new Track("Wanna Be Startin' Somethin'", 6));
         cd.addTrack(new Track("Thriller", 7));
         cd.addTrack(new Track("Beat It", 5));
-        cd.setLength();
+        cd.setLength(cd.getLength());
         store.addMedia(cd);
         
         // Thêm DVD vào Store
@@ -40,16 +40,16 @@ public class Aims {
         cd.play();
         track.play();
         
-//        
-//        // Thêm Media vào Cart
-//        cart.addMedia(dvd1, dvd2);
-//
-//        // Hiển thị Store và Cart
-//        store.displayStore();
-//        cart.displayCart();
-//
-//        // Tìm kiếm Media
-//        cart.search(1);
-//        cart.search("Avatar");
+        
+        // Thêm Media vào Cart
+        cart.addMedia(dvd1, dvd2);
+
+        // Hiển thị Store và Cart
+        store.displayStore();
+        cart.displayCart();
+
+        // Tìm kiếm Media
+        cart.search(1);
+        cart.search("Avatar");
     }
 }

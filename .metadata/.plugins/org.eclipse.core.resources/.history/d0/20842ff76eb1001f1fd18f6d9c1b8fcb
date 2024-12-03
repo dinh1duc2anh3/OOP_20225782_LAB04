@@ -1,0 +1,31 @@
+import Media;
+
+public class DigitalVideoDisc extends Media {
+    private String director;
+    private int length;
+
+    public DigitalVideoDisc(int id, String title, String category, float cost, String director, int length) {
+        super(id, title, category, cost);
+        this.director = director;
+        this.length = length;
+    }
+
+    @Override
+    public void displayDetails() {
+        System.out.println("DVD Title: " + getTitle());
+        System.out.println("Category: " + getCategory());
+        System.out.println("Director: " + director);
+        System.out.println("DVD Length: " + length + " minutes");
+        System.out.println("Cost: $" + getCost());
+    }
+
+    @Override
+    public void play() {
+        if (length > 0) {
+            System.out.println("Playing DVD: " + getTitle() + " (" + length + " minutes)");
+        } else {
+            System.out.println("DVD " + getTitle() + " cannot be played (invalid length).");
+        }
+    }
+}
+
