@@ -1,12 +1,12 @@
 package hust.soict.ite6.oop.test.disc;
 
-import hust.soict.ite6.oop.aims.media.DigitalVideoDisc;
+import hust.soict.ite6.oop.aims.disc.DigitalVideoDisc;
 
 public class TestPassingParameter {
 
 	public static void main(String[] args) {
-		DigitalVideoDisc jungleDVD = new DigitalVideoDisc("Jungle", "Sci-Fi", 20.0f, "Christopher Nolan", 148);
-        DigitalVideoDisc cinderellaDVD = new DigitalVideoDisc("Cinerella", "Fantasy", 25.0f, "James Cameron", 162);
+		DigitalVideoDisc jungleDVD  = new DigitalVideoDisc("Jungle");
+		DigitalVideoDisc cinderellaDVD  = new DigitalVideoDisc("Cinderella");
 		
 		swap(jungleDVD, cinderellaDVD);
 		

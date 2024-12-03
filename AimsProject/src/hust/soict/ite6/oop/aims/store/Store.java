@@ -2,40 +2,50 @@ package hust.soict.ite6.oop.aims.store;
 
 import java.util.ArrayList;
 
-import hust.soict.ite6.oop.aims.disc.DigitalVideoDisc;
+import hust.soict.ite6.oop.aims.media.Media;
 
 public class Store {
 	public static final int MAX_NUBMERS_STORED = 100;
-	ArrayList<DigitalVideoDisc> itemsInStore = new ArrayList<>();
+	ArrayList<Media> itemsInStore = new ArrayList<>();
+	public static int nbMedia = 0;
 	
-	int qtyStored = 0;
+	//note qtyStored là thừa vì size của itemsInStore.size() là được, và cấu trúc ArrayList sẽ tự độgn resizes khi đạt max
+	
+//	int qtyStored = 0;
 
-	public void addDVD(DigitalVideoDisc... discs) {
-		for (DigitalVideoDisc disc : discs) {
-			if (qtyStored < MAX_NUBMERS_STORED) {
-				itemsInStore.add(disc);
-				System.out.println("The disc " + disc.getTitle() + " has been added into the store");
-				qtyStored = itemsInStore.size();
-			} else {
-				System.out.println("The store is full, can't add " + disc.getTitle());
-				break;
-			}
-		}
-	}
-	
-	
-	public void removeDVD(DigitalVideoDisc disc) {
-		itemsInStore.remove(disc);
-		System.out.println("The disc " + disc.getTitle() + " has been removed");
-		qtyStored = itemsInStore.size();
-	}
-	
-	public void printDVD() {
+	public void addMedia(Media... medias) {
 		System.out.println("***********************STORE***********************");
-		for (int i=0; i<itemsInStore.size(); i++) {
-			System.out.println(itemsInStore.get(i).toString());
+        for (Media media : medias) {
+            if (itemsInStore.size() < MAX_NUBMERS_STORED) {
+                itemsInStore.add(media);
+//                nbMedia ++;
+//            	media.setId(nbMedia);
+                System.out.println("The media " + media.getTitle() + " has been added into the store");
+            } else {
+                System.out.println("The store is full, can't add " + media.getTitle());
+                break;
+            }
+        }
+    }
+	
+	public void removeMedia(Media media) {
+		System.out.println("***********************REMOVE***********************");
+		itemsInStore.remove(media);
+		System.out.println("The media " + media.getTitle() + " has been removed");
+	}
+	
+	// Display details of all Media in the store
+	public void displayStore() {
+		System.out.println("***********************STORE***********************");
+		for (Media media: itemsInStore) {
+			media.displayDetails();
+			System.out.println();
 		}
-		System.out.println("***************************************************");
+		
+		//note  có cần dùng toString trong dvd nữa ko
+//		for (int i=0; i<itemsInStore.size(); i++) {
+//			System.out.println(itemsInStore.get(i).toString());
+//		}
 	}
 	
 }
