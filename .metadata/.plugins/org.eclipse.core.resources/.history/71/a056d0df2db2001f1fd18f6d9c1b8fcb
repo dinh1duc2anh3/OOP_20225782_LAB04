@@ -22,6 +22,7 @@ public class Store {
 				System.out.println("The media " + media.getTitle() + " has been added into the store");
 			} else {
 				System.out.println("The store is full, can't add " + media.getTitle());
+				break;
 			}
 		}
 	}

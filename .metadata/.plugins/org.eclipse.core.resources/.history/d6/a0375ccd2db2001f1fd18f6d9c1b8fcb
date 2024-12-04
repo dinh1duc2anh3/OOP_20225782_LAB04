@@ -19,9 +19,12 @@ public class Store {
 		for (Media media : medias) {
 			if (itemsInStore.size() < MAX_NUBMERS_STORED && !itemsInStore.contains(media)) {
 				itemsInStore.add(media);
+//                nbMedia ++;
+//            	media.setId(nbMedia);
 				System.out.println("The media " + media.getTitle() + " has been added into the store");
 			} else {
 				System.out.println("The store is full, can't add " + media.getTitle());
+				break;
 			}
 		}
 	}

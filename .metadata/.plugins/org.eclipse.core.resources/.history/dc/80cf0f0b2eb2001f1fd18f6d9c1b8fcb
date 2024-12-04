@@ -35,7 +35,8 @@ public class Aims {
         //Add a track
         Track track = new Track("Single Track", 3);
         
-                
+        
+        
         
 
         store.addMedia(book, cd, dvd1, dvd2);

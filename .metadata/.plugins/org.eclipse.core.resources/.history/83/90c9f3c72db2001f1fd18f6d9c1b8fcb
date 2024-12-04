@@ -53,8 +53,5 @@ public abstract class Media {
         return Objects.equals(title, media.title); // So sánh `title`
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(title, id); // Tạo mã băm dựa trên `title` và `id`
-    }
+    
 }
