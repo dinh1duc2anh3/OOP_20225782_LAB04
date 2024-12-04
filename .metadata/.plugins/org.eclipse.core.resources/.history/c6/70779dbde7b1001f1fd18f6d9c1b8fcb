@@ -14,25 +14,8 @@ public class CompactDisc extends Disc implements Playable {
     }
 
     public void addTrack(Track track) {
-    	if (!tracks.contains(track)) {
-    		tracks.add(track);
-    		System.out.println("Track " + track.getTitle() + " has been added to the CD " + this.getTitle());
-    	}
-    	else {
-    		System.out.println("Track " + track.getTitle() + " is already in the CD " + this.getTitle());
-    	}
+        tracks.add(track);
     }
-    
-    public void removeTrack(Track track) {
-    	if (tracks.contains(track)) {
-    		tracks.remove(track);
-    		System.out.println("Track " + track.getTitle() + " has been removed from the CD " + this.getTitle());
-    	}
-    	else {
-    		System.out.println("Track " + track.getTitle() + " is not in the CD " + this.getTitle());
-    	}
-    }
-    
 
     public int getLength() {
         return tracks.stream().mapToInt(Track::getLength).sum();

@@ -21,9 +21,10 @@ public class Track implements Playable {
 
     public void play() {
         if (length > 0) {
-        	System.out.println("Playing CD: " + this.getTitle() + " (" + this.getLength() + " mins)");
+        	System.out.println("Playing track: " + this.getTitle());
+            System.out.println("Track length: " + this.getLength() + " minutes");
         } else {
-            System.out.println("Track " + this.getTitle() + " cannot be played");
+            System.out.println("Track " + this.getTitle() + " cannot be played (invalid length).");
         }
     }
 }
