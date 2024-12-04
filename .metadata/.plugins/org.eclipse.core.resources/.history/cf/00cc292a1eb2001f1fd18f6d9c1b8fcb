@@ -37,13 +37,13 @@ public class Aims {
         
         
         
+//        
+//
+//        store.addMedia(book, cd, dvd1, dvd2);
         
-
-        store.addMedia(book, cd, dvd1, dvd2);
+        List<Media> mediae = new ArrayList<Media>();
         
-        store.displayStore();
-        
-        
+        mediae.add(null)
         
         
 //        //test Playable implementations

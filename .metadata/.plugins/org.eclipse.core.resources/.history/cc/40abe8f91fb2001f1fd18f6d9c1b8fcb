@@ -33,7 +33,7 @@ public abstract class Disc extends Media {
     
     @Override
 	public String toString() {
-		String result = super.toString();
+		String result = this.toString();
 		StringBuilder sb = new StringBuilder();
 		
 		sb.append(result).append(", Director: ").append(director).append(", Length: ").append(length);

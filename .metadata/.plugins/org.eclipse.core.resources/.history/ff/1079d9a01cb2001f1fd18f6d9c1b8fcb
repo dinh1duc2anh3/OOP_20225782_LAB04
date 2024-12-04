@@ -47,16 +47,5 @@ public class Book extends Media {
 		System.out.println("Books cant be played");
 	}
 	
-	@Override
-	public String toString() {
-		String result = super.toString();
-		StringBuilder sb = new StringBuilder();
-		
-		sb.append(result).append(", Authors: ").append(String.join(",", authors));
-		
-		result = sb.toString();
-		return result;
-	}
-	
 	
 }

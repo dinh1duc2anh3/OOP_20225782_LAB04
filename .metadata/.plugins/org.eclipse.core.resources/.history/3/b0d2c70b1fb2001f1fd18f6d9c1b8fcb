@@ -16,6 +16,7 @@ public class Aims {
     public static void main(String[] args) {
         Store store = new Store();
         Cart cart = new Cart();
+        List<Media> mediae = new ArrayList<Media>();
 
         // Thêm book vào Store
         Book book = new Book("Effective Java", "Programming", 45.0f, Arrays.asList("Joshua Bloch"));
@@ -41,7 +42,10 @@ public class Aims {
 
         store.addMedia(book, cd, dvd1, dvd2);
         
-        store.displayStore();
+        
+        mediae.add(cd);
+        
+       
         
         
         

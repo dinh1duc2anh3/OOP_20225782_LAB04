@@ -30,15 +30,4 @@ public abstract class Disc extends Media {
 
     // Abstract method for Disc-specific details
     public abstract void play();
-    
-    @Override
-	public String toString() {
-		String result = super.toString();
-		StringBuilder sb = new StringBuilder();
-		
-		sb.append(result).append(", Director: ").append(director).append(", Length: ").append(length);
-		
-		result = sb.toString();
-		return result;
-	}
 }

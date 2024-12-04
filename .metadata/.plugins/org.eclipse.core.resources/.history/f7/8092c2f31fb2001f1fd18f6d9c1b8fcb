@@ -62,7 +62,7 @@ public class CompactDisc extends Disc implements Playable {
     
     @Override
 	public String toString() {
-		String result = super.toString();
+		String result = this.toString();
 		StringBuilder sb = new StringBuilder();
 		
 		sb.append(result).append(", Artist: ").append(artist);

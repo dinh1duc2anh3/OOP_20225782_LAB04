@@ -41,7 +41,10 @@ public class Aims {
 
         store.addMedia(book, cd, dvd1, dvd2);
         
-        store.displayStore();
+        for (Media m : store) {
+        	System.out.println(m.toString());
+        }
+       
         
         
         

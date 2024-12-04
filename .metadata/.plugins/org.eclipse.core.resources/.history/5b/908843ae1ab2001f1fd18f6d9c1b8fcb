@@ -1,6 +1,5 @@
 package hust.soict.ite6.oop.aims.media;
 
-import java.util.Objects;
 
 public abstract class Media {
     private int id;
@@ -39,18 +38,7 @@ public abstract class Media {
     
     @Override
     public String toString() {
-    	StringBuilder sb = new StringBuilder();
-    	sb.append("Id: ").append(id).append(", Title: ").append(title).append(", Category: ")
-    		.append(category).append(", Cost: ").append(cost);
-    	return sb.toString();
-    }
-    
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true; // Nếu 2 đối tượng trỏ đến cùng một ô nhớ
-        if (obj == null || getClass() != obj.getClass()) return false; // Nếu null hoặc khác kiểu Media
-        Media media = (Media) obj; // Ép kiểu (cast) sang Media
-        return Objects.equals(title, media.title); // So sánh `title`
+        return "Media [ID: " + id + ", Title: " + title + ", Category: " + category + ", Cost: " + cost + "]";
     }
 
     

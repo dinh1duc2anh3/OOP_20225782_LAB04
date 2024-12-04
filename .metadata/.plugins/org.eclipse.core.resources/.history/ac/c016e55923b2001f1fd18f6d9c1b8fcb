@@ -16,6 +16,7 @@ public class Aims {
     public static void main(String[] args) {
         Store store = new Store();
         Cart cart = new Cart();
+        List<Media> mediae = new ArrayList<Media>();
 
         // Thêm book vào Store
         Book book = new Book("Effective Java", "Programming", 45.0f, Arrays.asList("Joshua Bloch"));
