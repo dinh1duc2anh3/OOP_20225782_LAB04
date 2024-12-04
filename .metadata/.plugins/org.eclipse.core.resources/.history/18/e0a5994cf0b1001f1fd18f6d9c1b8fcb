@@ -19,7 +19,9 @@ public class Track implements Playable {
         return length;
     }
     
-    
+    public void displayDetails() {
+    	System.out.println("CD " + this.getTitle() + " (" + this.getLength() + " mins)");
+    }
 
     public void play() {
         if (length > 0) {
