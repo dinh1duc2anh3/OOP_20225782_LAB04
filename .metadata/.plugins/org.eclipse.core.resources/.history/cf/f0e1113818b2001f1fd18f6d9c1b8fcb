@@ -1,6 +1,5 @@
 package hust.soict.ite6.oop.aims.media;
 
-import java.util.Objects;
 
 public abstract class Media {
     private int id;
@@ -37,11 +36,8 @@ public abstract class Media {
 
     public abstract void play();
     
-    public boolean equals(Object obj) {
-		if (this == obj) return true;
-		if (obj == null || getClass() != obj.getClass()) return false; // Null or different class
-		Media media = (Media) obj; //safe cast to Media
-		return Objects.equals(title, media.title);
+    public boolean equals(Media o) {
+		return this.title == o.title;
     }
 
     
