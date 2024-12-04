@@ -31,7 +31,6 @@ public abstract class Media {
     public float getCost() {
         return cost;
     }
-    //just to test using git
     
 
     public abstract void displayDetails();
