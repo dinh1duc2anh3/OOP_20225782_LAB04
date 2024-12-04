@@ -43,9 +43,11 @@ public class Aims {
         store.displayStore();
         
      // Display the store sorted by title then cost
+        System.out.println("Store sorted by Title, then Cost:");
         store.displayStoreSortedByTitleThenCost();
         
         // Display the store sorted by cost then title
+        System.out.println("Store sorted by Cost, then Title:");
         store.displayStoreSortedByCostThenTitle();
         
         

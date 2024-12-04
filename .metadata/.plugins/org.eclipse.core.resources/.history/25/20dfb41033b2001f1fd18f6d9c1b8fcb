@@ -42,11 +42,7 @@ public class Aims {
         
         store.displayStore();
         
-     // Display the store sorted by title then cost
-        store.displayStoreSortedByTitleThenCost();
         
-        // Display the store sorted by cost then title
-        store.displayStoreSortedByCostThenTitle();
         
         
 //        //test Playable implementations

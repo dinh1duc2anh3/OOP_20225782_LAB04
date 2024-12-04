@@ -55,8 +55,7 @@ public class Store {
 //		}
 	}
 	
-	public void displayStoreSortedByTitleThenCost() {
-		System.out.println("***********************STORE SORTED BY TITLE-COST***********************");
+	public void displayStoreSortedByTitleCost() {
 		Collections.sort(itemsInStore, Media.COMPARE_BY_TITLE_COST);
 		for (Media media : itemsInStore) {
 			System.out.println(media.toString());
@@ -64,7 +63,6 @@ public class Store {
 	}
 	
 	public void displayStoreSortedByCostThenTitle() {
-		System.out.println("***********************STORE SORTED BY COST-TITLE***********************");
 		Collections.sort(itemsInStore, Media.COMPARE_BY_COST_TITLE);
 		for (Media media:itemsInStore) {
 			System.out.println(media.toString());
