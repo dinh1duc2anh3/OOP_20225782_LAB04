@@ -55,35 +55,6 @@ public class Store {
 //		}
 	}
 	
-	public void search(int id) {
-		System.out.println("**********************SEARCH************************");
-		boolean found = false;
-		for (Media media : itemsInStore) {
-			if (media.getId() == id) {
-				media.displayDetails();
-				found = true;
-				break;
-			}
-		}
-		if (!found)
-			System.out.println("No media found with ID = " + id);
-	}
-
-	public Media search(String title) {
-		System.out.println("**********************SEARCH************************");
-		boolean found = false;
-		for (Media media : itemsInStore) {
-			if (media.getTitle().equalsIgnoreCase(title)) {
-				media.displayDetails();
-				found = true;
-				return media;
-			}
-		}
-		if (!found)
-			System.out.println("No media found with title = " + title);
-		return null;
-	}
-	
 	public void displayStoreSortedByTitleThenCost() {
 		System.out.println("***********************STORE SORTED BY TITLE-COST***********************");
 		Collections.sort(itemsInStore, Media.COMPARE_BY_TITLE_COST);

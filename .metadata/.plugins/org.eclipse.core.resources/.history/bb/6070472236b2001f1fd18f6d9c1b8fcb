@@ -4,9 +4,9 @@ import hust.soict.ite6.oop.aims.cart.Cart;
 import hust.soict.ite6.oop.aims.media.Book;
 import hust.soict.ite6.oop.aims.media.CompactDisc;
 import hust.soict.ite6.oop.aims.media.DigitalVideoDisc;
-import hust.soict.ite6.oop.aims.media.Media;
 import hust.soict.ite6.oop.aims.media.Track;
 import hust.soict.ite6.oop.aims.store.Store;
+import javafx.scene.media.Media;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -105,9 +105,7 @@ public class Aims {
                 case 1: // See media's details
                     System.out.print("Enter media title: ");
                     String title = scanner.nextLine();
-                    
-                    
-                    Media media = store.search(title);
+                    Media media = store.getMediaByTitle(title);
                     if (media != null) {
                         System.out.println(media.toString());
                         mediaDetailsMenu();
@@ -118,7 +116,11 @@ public class Aims {
                                 cart.addMedia(media);
                                 break;
                             case 2: // Play
-                                media.play();
+                                if (media instanceof Playable) {
+                                    ((Playable) media).play();
+                                } else {
+                                    System.out.println("This media cannot be played.");
+                                }
                                 break;
                             case 0: // Back
                                 break;
@@ -130,7 +132,7 @@ public class Aims {
                 case 2: // Add a media to cart
                     System.out.print("Enter media title: ");
                     title = scanner.nextLine();
-                    media = store.search(title);
+                    media = store.getMediaByTitle(title);
                     if (media != null) {
                         cart.addMedia(media);
                     } else {
@@ -140,7 +142,7 @@ public class Aims {
                 case 3: // Play a media
                     System.out.print("Enter media title: ");
                     title = scanner.nextLine();
-                    media = store.search(title);
+                    media = store.getMediaByTitle(title);
                     if (media != null) {
                         if (media instanceof Playable) {
                             ((Playable) media).play();

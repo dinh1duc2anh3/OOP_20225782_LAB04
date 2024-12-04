@@ -4,7 +4,6 @@ import hust.soict.ite6.oop.aims.cart.Cart;
 import hust.soict.ite6.oop.aims.media.Book;
 import hust.soict.ite6.oop.aims.media.CompactDisc;
 import hust.soict.ite6.oop.aims.media.DigitalVideoDisc;
-import hust.soict.ite6.oop.aims.media.Media;
 import hust.soict.ite6.oop.aims.media.Track;
 import hust.soict.ite6.oop.aims.store.Store;
 
@@ -118,7 +117,11 @@ public class Aims {
                                 cart.addMedia(media);
                                 break;
                             case 2: // Play
-                                media.play();
+                                if (media instanceof Playable) {
+                                    ((Playable) media).play();
+                                } else {
+                                    System.out.println("This media cannot be played.");
+                                }
                                 break;
                             case 0: // Back
                                 break;

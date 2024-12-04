@@ -69,19 +69,18 @@ public class Store {
 			System.out.println("No media found with ID = " + id);
 	}
 
-	public Media search(String title) {
+	public void search(String title) {
 		System.out.println("**********************SEARCH************************");
 		boolean found = false;
 		for (Media media : itemsInStore) {
 			if (media.getTitle().equalsIgnoreCase(title)) {
 				media.displayDetails();
 				found = true;
-				return media;
+				break;
 			}
 		}
 		if (!found)
 			System.out.println("No media found with title = " + title);
-		return null;
 	}
 	
 	public void displayStoreSortedByTitleThenCost() {

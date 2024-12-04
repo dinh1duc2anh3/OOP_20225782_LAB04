@@ -9,7 +9,7 @@ public class Cart {
 	ArrayList<Media> itemsOrdered = new ArrayList<Media>(MAX_NUBMERS_ORDERED);
 	// (list of media )array
 
-	// add 1 media into cart
+	// add 1 or more media into cart
 	public void addMedia(Media media) {
 		System.out.println("***********************ADD***********************");
 		// if quantity is not max yet, then still can add
@@ -23,7 +23,7 @@ public class Cart {
 
 	}
 
-	// add more than 1 media into cart
+	// add 1 or more media into cart
 	public void addMedia(Media... medias) {
 		System.out.println("***********************ADD***********************");
 		// if quantity is not max yet, then still can add

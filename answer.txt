@@ -1,0 +1,4 @@
+What class should implement the Comparable interface?
+
+The Media class should implement the Comparable interface because we want to define a default ordering for all media items.
+
