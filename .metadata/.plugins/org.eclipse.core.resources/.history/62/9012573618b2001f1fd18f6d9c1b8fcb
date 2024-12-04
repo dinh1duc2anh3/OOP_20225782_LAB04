@@ -1,6 +1,6 @@
 package hust.soict.ite6.oop.aims.media;
 
-import java.util.Objects;
+
 
 public class Track implements Playable {
     private String title;
@@ -29,12 +29,8 @@ public class Track implements Playable {
         }
     }
     
-    public boolean equals(Object obj) {
-    	if ( this == obj) return true;
-    	if (obj == null || getClass() != obj.getClass()) return false; //NUll or different class
-    	Track track = (Track) obj; //Safe cast to Track
-    	return Objects.equals(title, track.title) && Objects.equals(length, track.length); // compare title + length
-    	
+    public boolean equals(Track o) {
+		return (this.title == o.title && this.length = o.length);
     }
 }
 

@@ -15,7 +15,7 @@ public class Cart {
 		System.out.println("***********************ADD***********************");
 		// if quantity is not max yet, then still can add
 		for (Media media : medias) {
-			if (itemsOrdered.size() < MAX_NUBMERS_ORDERED && !itemsOrdered.contains(media)) {
+			if (itemsOrdered.size() < MAX_NUBMERS_ORDERED) {
 				itemsOrdered.add(media);
                 System.out.println("The media " + media.getTitle() + " has been added into cart");
 			}
