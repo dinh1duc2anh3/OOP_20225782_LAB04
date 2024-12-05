@@ -44,8 +44,8 @@ public abstract class Media {
     @Override
     public String toString() {
     	StringBuilder sb = new StringBuilder();
-    	sb.append("Id: ").append(id).append(", Title: ").append(title).append(", Category: ")
-    		.append(category).append(", Cost: ").append(cost);
+    	sb.append(" Id:").append(id).append(", Title:").append(title).append(", Category:")
+    		.append(category).append(", Cost:").append(cost);
     	return sb.toString();
     }
     

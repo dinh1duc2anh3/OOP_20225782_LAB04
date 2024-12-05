@@ -10,7 +10,7 @@ public class CompactDisc extends Disc implements Playable {
     public CompactDisc( String title, String category, float cost, String artist, String director,int length) {
         super(title, category, cost, director,length);
         this.artist = artist;
-        System.out.println("CD " + title + " : id = "+this.getId());
+//        System.out.println("CD " + title + " : id = "+this.getId());
     }
 
     public void addTrack(Track track) {
@@ -65,7 +65,7 @@ public class CompactDisc extends Disc implements Playable {
 		String result = super.toString();
 		StringBuilder sb = new StringBuilder();
 		
-		sb.append(result).append(", Artist: ").append(artist);
+		sb.append("CD: ").append(result).append(", Artist: ").append(artist);
 		
 		result = sb.toString();
 		return result;

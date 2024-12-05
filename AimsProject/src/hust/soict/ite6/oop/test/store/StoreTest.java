@@ -30,7 +30,6 @@ public class StoreTest {
         store.addMedia(book);
 
         // Display all media in the store
-        System.out.println("***********************STORE***********************");
         store.displayStore();
 
         // Remove a media item
@@ -38,7 +37,6 @@ public class StoreTest {
         store.removeMedia(dvd3);
 
         // Display the store after removal
-        System.out.println("***********************STORE AFTER REMOVAL***********************");
         store.displayStore();
 
         // Attempt to remove a non-existent item

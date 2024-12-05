@@ -8,9 +8,7 @@ import hust.soict.ite6.oop.aims.media.Media;
 import hust.soict.ite6.oop.aims.media.Track;
 import hust.soict.ite6.oop.aims.store.Store;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 public class Aims {
@@ -51,7 +49,7 @@ public class Aims {
     }
 
     public static void showMenu() {
-        System.out.println("AIMS: ");
+        System.out.println("project AIMS: ");
         System.out.println("--------------------------------");
         System.out.println("1. View store");
         System.out.println("2. Update store");
@@ -62,7 +60,7 @@ public class Aims {
     }
 
     public static void storeMenu() {
-        System.out.println("Options: ");
+        System.out.println("Store Options: ");
         System.out.println("--------------------------------");
         System.out.println("1. Display store");
         System.out.println("2. See a media’s details");
@@ -75,7 +73,7 @@ public class Aims {
     }
 
     public static void mediaDetailsMenu() {
-        System.out.println("Options: ");
+        System.out.println("Media Options: ");
         System.out.println("--------------------------------");
         System.out.println("1. Add to cart");
         System.out.println("2. Play");
@@ -85,9 +83,9 @@ public class Aims {
     }
 
     public static void cartMenu() {
-        System.out.println("Options: ");
+        System.out.println("Cart Options: ");
         System.out.println("--------------------------------");
-        System.out.println("1. Filter medias in cart");
+        System.out.println("1. Search medias in cart");
         System.out.println("2. Sort medias in cart");
         System.out.println("3. Remove media from cart");
         System.out.println("4. Play a media");
@@ -134,7 +132,6 @@ public class Aims {
                     
                     Media media = store.search(title);
                     if (media != null) {
-                        System.out.println(media.toString());
                         mediaDetailsMenu();
                         int mediaChoice = scanner.nextInt();
                         scanner.nextLine();
@@ -152,7 +149,10 @@ public class Aims {
                     break;
                     
                 case 3: // Add a media to cart
-                    addMediaToCart(scanner);
+                	System.out.print("Enter media title: ");
+                    String addMediaString = scanner.nextLine();
+                    Media addMedia = store.search(addMediaString);
+                    cart.addMedia(addMedia);
                     break;
                     
                 case 4: // Play a media
@@ -179,7 +179,7 @@ public class Aims {
 
     // Option 2: Update store
     public static void updateStore(Scanner scanner) {
-        System.out.println("Options: ");
+        System.out.println("Store Update Options: ");
         System.out.println("1. Add media");
         System.out.println("2. Remove media");
         System.out.println("0. Back");
@@ -209,7 +209,7 @@ public class Aims {
             scanner.nextLine(); // Consume newline
 
             switch (choice) {
-                case 1: // Filter medias in cart
+                case 1: // Search medias in cart
                     System.out.println("Choose filter: ");
                     System.out.println("1. By ID");
                     System.out.println("2. By title");
@@ -352,7 +352,7 @@ public class Aims {
     public static void addMediaToCart(Scanner scanner) {
         System.out.println("Enter the type of media (Book/DVD/CD): ");
         String type = scanner.nextLine().trim();
-
+        
         String title = getTitle(scanner);
         String category = getCategory(scanner);
         float cost = getCost(scanner);
@@ -443,59 +443,3 @@ public class Aims {
     
 }
 
-
-//	
-//    public static void main(String[] args) {
-//        
-//
-//        // Thêm book vào Store
-//        Book book = new Book("Effective Java", "Programming", 45.0f, Arrays.asList("Joshua Bloch"));
-//        
-//        // Thêm CD vào Store	
-//        CompactDisc cd = new CompactDisc("Thriller", "Pop", 15.0f, "Michael Jackson","Quincy Jones", 0);
-//        cd.addTrack(new Track("Wanna Be Startin' Somethin'", 6));
-//        cd.addTrack(new Track("Thriller", 7));
-//        cd.addTrack(new Track("Beat It", 5));
-//        cd.setLength(cd.getLength());
-//        store.addMedia(cd);
-//        
-//        // Thêm DVD vào Store
-//        DigitalVideoDisc dvd1 = new DigitalVideoDisc("Inception", "Sci-Fi", 20.0f, "Christopher Nolan", 148);
-//        DigitalVideoDisc dvd2 = new DigitalVideoDisc("Avatar", "Fantasy", 25.0f, "James Cameron", 162);
-//        
-//        //Add a track
-//        Track track = new Track("Single Track", 3);
-//        
-//                
-//        
-//
-//        store.addMedia(book, cd, dvd1, dvd2);
-//        
-//        store.displayStore();
-//        
-//     // Display the store sorted by title then cost
-//        store.displayStoreSortedByTitleThenCost();
-//        
-//        // Display the store sorted by cost then title
-//        store.displayStoreSortedByCostThenTitle();
-//        
-//        
-//        //test Playable implementations
-//        dvd1.play();
-//        dvd2.play();
-//        cd.play();
-//        track.play();
-//        
-//        
-//        // Thêm Media vào Cart
-//        cart.addMedia(dvd1, dvd2);
-//
-//        // Hiển thị Store và Cart
-//        store.displayStore();
-//        cart.displayCart();
-//
-//        // Tìm kiếm Media
-//        cart.search(1);
-//        cart.search("Avatar");
-//    }
-//}

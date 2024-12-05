@@ -17,7 +17,12 @@ public class Cart {
 
 		if (itemsOrdered.size() < MAX_NUBMERS_ORDERED && !itemsOrdered.contains(media)) {
 			itemsOrdered.add(media);
-			System.out.println("The media " + media.getTitle() + " has been added into cart");
+			String simpleClassName = media.getClass().getSimpleName();
+			String displayClassName = simpleClassName.equalsIgnoreCase("dvd") ? "DVD" : 
+				simpleClassName.equalsIgnoreCase("cd") ? "CD" : 
+					simpleClassName.equalsIgnoreCase("book") ? "Book" :" ";
+			
+			System.out.println("The "+displayClassName+" " + media.getTitle() + " has been added into cart");
 		} else {
 			System.out.println("The cart is full, can't add " + media.getTitle());
 		}
@@ -31,7 +36,13 @@ public class Cart {
 		for (Media media : medias) {
 			if (itemsOrdered.size() < MAX_NUBMERS_ORDERED && !itemsOrdered.contains(media)) {
 				itemsOrdered.add(media);
-				System.out.println("The media " + media.getTitle() + " has been added into cart");
+				String simpleClassName = media.getClass().getSimpleName();
+				String displayClassName = null;
+				if (simpleClassName.equalsIgnoreCase("DigitalVideoDisc")) displayClassName = "DVD";
+				if (simpleClassName.equalsIgnoreCase("CompactDisc")) displayClassName = "CD";
+				if (simpleClassName.equalsIgnoreCase("Book")) displayClassName = "Book";
+				
+				System.out.println("The "+displayClassName+" " + media.getTitle() + " has been added into cart");
 			} else {
 				System.out.println("The cart is full, can't add " + media.getTitle());
 			}
@@ -42,7 +53,13 @@ public class Cart {
 		System.out.println("***********************CART REMOVE***********************");
 		if (itemsOrdered.contains(media)) {
 			itemsOrdered.remove(media);
-			System.out.println("The media " + media.getTitle() + " has been removed.");
+			String simpleClassName = media.getClass().getSimpleName();
+			String displayClassName = null;
+			if (simpleClassName.equalsIgnoreCase("DigitalVideoDisc")) displayClassName = "DVD";
+			if (simpleClassName.equalsIgnoreCase("CompactDisc")) displayClassName = "CD";
+			if (simpleClassName.equalsIgnoreCase("Book")) displayClassName = "Book";
+			
+			System.out.println("The "+displayClassName+" " + media.getTitle() + " has been removed.");
 		} else {
 			System.out.println("The media " + media.getTitle() + " is not in the cart");
 		}
@@ -68,31 +85,25 @@ public class Cart {
 
 	public Media search(int id) {
 		System.out.println("**********************CART SEARCH************************");
-		boolean found = false;
 		for (Media media : itemsOrdered) {
 			if (media.getId() == id) {
 				media.displayDetails();
-				found = true;
 				return media;
 			}
 		}
-		if (!found)
 			System.out.println("No media found with ID = " + id);
 		return null;
 	}
 
 	public Media search(String title) {
 		System.out.println("**********************CART SEARCH************************");
-		boolean found = false;
 		for (Media media : itemsOrdered) {
 			if (media.getTitle().equalsIgnoreCase(title)) {
 				media.displayDetails();
-				found = true;
 				return media;
 			}
 		}
-		if (!found)
-			System.out.println("No media found with title = " + title);
+		System.out.println("No media found with title = " + title);
 		return null;
 	}
 	
@@ -114,9 +125,7 @@ public class Cart {
 	
 	public void clear() {
 		System.out.println("***********************CART CLEAR***********************");
-		for (Media media : itemsOrdered) {
-			itemsOrdered.remove(media);
-		}
+		itemsOrdered.clear();
 	}
 
 }

@@ -1,7 +1,6 @@
 package hust.soict.ite6.oop.aims.store;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 
 import hust.soict.ite6.oop.aims.media.Media;
@@ -21,9 +20,15 @@ public class Store {
 		for (Media media : medias) {
 			if (itemsInStore.size() < MAX_NUBMERS_STORED && !itemsInStore.contains(media)) {
 				itemsInStore.add(media);
-				System.out.println("The media " + media.getTitle() + " has been added into the store");
+				String simpleClassName = media.getClass().getSimpleName();
+				String displayClassName = null;
+				if (simpleClassName.equalsIgnoreCase("DigitalVideoDisc")) displayClassName = "DVD";
+				if (simpleClassName.equalsIgnoreCase("CompactDisc")) displayClassName = "CD";
+				if (simpleClassName.equalsIgnoreCase("Book")) displayClassName = "Book";
+				
+				System.out.println("The "+displayClassName+" " + media.getTitle()+" with Id="+media.getId() + " has been added into the store");
 			} else {
-				System.out.println("The store is full, can't add " + media.getTitle());
+				System.out.println("The store is full, can't add "+ media.getTitle());
 			}
 		}
 	}
@@ -35,8 +40,13 @@ public class Store {
 
 		if (itemsInStore.contains(media)) {
 			itemsInStore.remove(media);
+			String simpleClassName = media.getClass().getSimpleName();
+			String displayClassName = null;
+			if (simpleClassName.equalsIgnoreCase("DigitalVideoDisc")) displayClassName = "DVD";
+			if (simpleClassName.equalsIgnoreCase("CompactDisc")) displayClassName = "CD";
+			if (simpleClassName.equalsIgnoreCase("Book")) displayClassName = "Book";
 //                
-			System.out.println("The media " + media.getTitle() + " has been removed");
+			System.out.println("The "+displayClassName+" " + media.getTitle()+" with Id="+media.getId() + " has been removed");
 		} else {
 			System.out.println("The media " + media.getTitle() + " is not in the store");
 
@@ -48,31 +58,26 @@ public class Store {
 	
 	public Media search(int id) {
 		System.out.println("**********************STORE SEARCH************************");
-		boolean found = false;
 		for (Media media : itemsInStore) {
 			if (media.getId() == id) {
 				media.displayDetails();
-				found = true;
 				return media;
 			}
 		}
-		if (!found)
-			System.out.println("No media found with ID = " + id);
+		System.out.println("No media found with ID = " + id);
 		return null;
 	}
 
 	public Media search(String title) {
 		System.out.println("**********************STORE SEARCH************************");
-		boolean found = false;
 		for (Media media : itemsInStore) {
 			if (media.getTitle().equalsIgnoreCase(title)) {
 				media.displayDetails();
-				found = true;
+
 				return media;
 			}
 		}
-		if (!found)
-			System.out.println("No media found with title = " + title);
+		System.out.println("No media found with title = " + title);
 		return null;
 	}
 	

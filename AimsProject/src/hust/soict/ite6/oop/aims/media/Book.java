@@ -10,7 +10,7 @@ public class Book extends Media {
 	public Book(String title, String category, float cost, List<String> authors) {
 		super(title, category, cost);
 		this.authors = authors;
-		System.out.println("Book " + title + " : id = "+this.getId());
+//		System.out.println("Book " + title + " : id = "+this.getId());
 	}
 	
 	public void addAuthor(String authorName) {
@@ -52,7 +52,7 @@ public class Book extends Media {
 		String result = super.toString();
 		StringBuilder sb = new StringBuilder();
 		
-		sb.append(result).append(", Authors: ").append(String.join(",", authors));
+		sb.append("Book: ").append(result).append(", Authors:").append(String.join(",", authors));
 		
 		result = sb.toString();
 		return result;
