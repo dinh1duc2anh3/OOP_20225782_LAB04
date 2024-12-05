@@ -17,7 +17,7 @@ public class Store {
 //	int qtyStored = 0;
 
 	public void addMedia(Media... medias) {
-		System.out.println("***********************STORE ADD***********************");
+		System.out.println("***********************ADD***********************");
 		for (Media media : medias) {
 			if (itemsInStore.size() < MAX_NUBMERS_STORED && !itemsInStore.contains(media)) {
 				itemsInStore.add(media);
@@ -27,11 +27,9 @@ public class Store {
 			}
 		}
 	}
-	
-	
 
 	public void removeMedia(Media media) {
-		System.out.println("***********************STORE REMOVE***********************");
+		System.out.println("***********************REMOVE***********************");
 
 		if (itemsInStore.contains(media)) {
 			itemsInStore.remove(media);
@@ -44,25 +42,35 @@ public class Store {
 
 	}
 
+	// Display details of all Media in the store
+	public void displayStore() {
+		System.out.println("***********************STORE***********************");
+		for (Media media : itemsInStore) {
+//			media.displayDetails();
+			System.out.println(media.toString());
+		}
+		// note có cần dùng toString trong dvd nữa ko
+//		for (int i=0; i<itemsInStore.size(); i++) {
+//			System.out.println(itemsInStore.get(i).toString());
+//		}
+	}
 	
-	
-	public Media search(int id) {
-		System.out.println("**********************STORE SEARCH************************");
+	public void search(int id) {
+		System.out.println("**********************SEARCH************************");
 		boolean found = false;
 		for (Media media : itemsInStore) {
 			if (media.getId() == id) {
 				media.displayDetails();
 				found = true;
-				return media;
+				break;
 			}
 		}
 		if (!found)
 			System.out.println("No media found with ID = " + id);
-		return null;
 	}
 
 	public Media search(String title) {
-		System.out.println("**********************STORE SEARCH************************");
+		System.out.println("**********************SEARCH************************");
 		boolean found = false;
 		for (Media media : itemsInStore) {
 			if (media.getTitle().equalsIgnoreCase(title)) {
@@ -75,19 +83,6 @@ public class Store {
 			System.out.println("No media found with title = " + title);
 		return null;
 	}
-	
-	// Display details of all Media in the store
-		public void displayStore() {
-			System.out.println("***********************STORE***********************");
-			for (Media media : itemsInStore) {
-//				media.displayDetails();
-				System.out.println(media.toString());
-			}
-			// note có cần dùng toString trong dvd nữa ko
-//			for (int i=0; i<itemsInStore.size(); i++) {
-//				System.out.println(itemsInStore.get(i).toString());
-//			}
-		}
 	
 	public void displayStoreSortedByTitleThenCost() {
 		System.out.println("***********************STORE SORTED BY TITLE-COST***********************");

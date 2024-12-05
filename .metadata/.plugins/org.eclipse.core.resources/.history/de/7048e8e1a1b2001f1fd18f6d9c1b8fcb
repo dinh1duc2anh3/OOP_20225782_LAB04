@@ -18,8 +18,6 @@ public class Aims {
 	private static Store store = new Store();
     private static Cart cart = new Cart();
 	
-	//  Thêm book vào Store
-	
     
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -64,8 +62,7 @@ public class Aims {
     public static void storeMenu() {
         System.out.println("Options: ");
         System.out.println("--------------------------------");
-        System.out.println("1. Display store");
-        System.out.println("2. See a media’s details");
+        System.out.println("1. See a media’s details");
         System.out.println("2. Add a media to cart");
         System.out.println("3. Play a media");
         System.out.println("4. See current cart");
@@ -240,18 +237,18 @@ public class Aims {
                 case 3: // Remove media from cart
                     System.out.print("Enter media title to remove: ");
                     String titleToRemove = scanner.nextLine();
-                    
-                    //de tam o day
-                    Book book = new Book("Effective Java", "Programming", 45.0f, Arrays.asList("Joshua Bloch"));
-                    //thay bang ham remove bang name chu ko phai obj
-                    cart.removeMedia(book);
+                    cart.removeMedia(titleToRemove);
                     break;
                 case 4: // Play a media
                     System.out.print("Enter media title to play: ");
                     String playTitle = scanner.nextLine();
-                    Media media = cart.search(playTitle);
+                    Media media = cart.getMediaByTitle(playTitle);
+                    if (media instanceof Playable) {
+                        ((Playable) media).play();
+                    } else {
+                        System.out.println("This media cannot be played.");
+                    }
                     break;
-                    
                 case 5: // Place order
                     System.out.println("Order has been placed!");
                     cart.clear();
@@ -263,7 +260,6 @@ public class Aims {
             }
         }
     }
-    
 }
 
 
@@ -320,5 +316,5 @@ public class Aims {
 //        // Tìm kiếm Media
 //        cart.search(1);
 //        cart.search("Avatar");
-//    }
-//}
+    }
+}

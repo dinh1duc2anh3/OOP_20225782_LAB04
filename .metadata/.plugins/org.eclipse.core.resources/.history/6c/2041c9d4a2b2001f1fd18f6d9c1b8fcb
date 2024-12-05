@@ -12,7 +12,7 @@ public class Cart {
 
 	// add 1 media into cart
 	public void addMedia(Media media) {
-		System.out.println("***********************CART ADD***********************");
+		System.out.println("***********************ADD***********************");
 		// if quantity is not max yet, then still can add
 
 		if (itemsOrdered.size() < MAX_NUBMERS_ORDERED && !itemsOrdered.contains(media)) {
@@ -26,7 +26,7 @@ public class Cart {
 
 	// add more than 1 media into cart
 	public void addMedia(Media... medias) {
-		System.out.println("***********************CART ADD***********************");
+		System.out.println("***********************ADD***********************");
 		// if quantity is not max yet, then still can add
 		for (Media media : medias) {
 			if (itemsOrdered.size() < MAX_NUBMERS_ORDERED && !itemsOrdered.contains(media)) {
@@ -39,7 +39,7 @@ public class Cart {
 	}
 
 	public void removeMedia(Media media) {
-		System.out.println("***********************CART REMOVE***********************");
+		System.out.println("***********************REMOVE***********************");
 		if (itemsOrdered.contains(media)) {
 			itemsOrdered.remove(media);
 			System.out.println("The media " + media.getTitle() + " has been removed.");
@@ -67,7 +67,7 @@ public class Cart {
 	}
 
 	public Media search(int id) {
-		System.out.println("**********************CART SEARCH************************");
+		System.out.println("**********************SEARCH************************");
 		boolean found = false;
 		for (Media media : itemsOrdered) {
 			if (media.getId() == id) {
@@ -82,7 +82,7 @@ public class Cart {
 	}
 
 	public Media search(String title) {
-		System.out.println("**********************CART SEARCH************************");
+		System.out.println("**********************SEARCH************************");
 		boolean found = false;
 		for (Media media : itemsOrdered) {
 			if (media.getTitle().equalsIgnoreCase(title)) {
@@ -113,10 +113,8 @@ public class Cart {
 	}
 	
 	public void clear() {
-		System.out.println("***********************CART CLEAR***********************");
-		for (Media media : itemsOrdered) {
-			itemsOrdered.remove(media);
-		}
+		System.out.println("***********************CART***********************");
+		
 	}
 
 }
