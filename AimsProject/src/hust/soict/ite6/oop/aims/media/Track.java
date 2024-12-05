@@ -8,6 +8,7 @@ public class Track implements Playable {
 
     public Track(String title, int length) {
         this.title = title;
+        
         this.length = length;
     }
 

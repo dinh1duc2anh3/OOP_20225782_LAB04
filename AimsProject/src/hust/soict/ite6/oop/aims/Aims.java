@@ -66,9 +66,9 @@ public class Aims {
         System.out.println("--------------------------------");
         System.out.println("1. Display store");
         System.out.println("2. See a media’s details");
-        System.out.println("2. Add a media to cart");
-        System.out.println("3. Play a media");
-        System.out.println("4. See current cart");
+        System.out.println("3. Add a media to cart");
+        System.out.println("4. Play a media");
+        System.out.println("5. See current cart");
         System.out.println("0. Back");
         System.out.println("--------------------------------");
         System.out.print("Please choose a number: 0-1-2-3-4: ");
@@ -105,7 +105,29 @@ public class Aims {
             scanner.nextLine();  // Consume the newline character
 
             switch (choice) {
-                case 1: // See media's details
+            	case 1: //display store
+            		System.out.println("Choose criteria: ");
+                    System.out.println("1. By Title");
+                    System.out.println("2. By Cost");
+                    int sortingCriteria = scanner.nextInt();
+                    scanner.nextLine(); // Consume newline
+                    
+            	
+                    if (sortingCriteria == 1 ) {
+                    	store.displayStoreSortedByTitleThenCost();
+                    	break;
+                    }
+                    
+                    else if (sortingCriteria == 2 ) {
+                    	store.displayStoreSortedByCostThenTitle();
+                    	break;
+                    
+                    }
+                    else {
+                    	System.out.println("Invalid choice! Please enter a valid option.");
+                    	break;
+                    }
+                case 2: // See media's details
                     System.out.print("Enter media title: ");
                     String title = scanner.nextLine();
                     
@@ -129,16 +151,11 @@ public class Aims {
                     } 
                     break;
                     
-                case 2: // Add a media to cart
-                    System.out.print("Enter media title: ");
-                    title = scanner.nextLine();
-                    media = store.search(title);
-                    if (media != null) {
-                        cart.addMedia(media);
-                    }
+                case 3: // Add a media to cart
+                    addMediaToCart(scanner);
                     break;
                     
-                case 3: // Play a media
+                case 4: // Play a media
                     System.out.print("Enter media title: ");
                     title = scanner.nextLine();
                     media = store.search(title);
@@ -147,7 +164,7 @@ public class Aims {
                     }
                     break;
                     
-                case 4: // See current cart
+                case 5: // See current cart
                     seeCurrentCart(scanner);
                     break;
                     
@@ -170,16 +187,12 @@ public class Aims {
         int choice = scanner.nextInt();
         scanner.nextLine(); // Consume newline
         switch (choice) {
-            case 1: // Add media
-            	//làm thêm hàm getDetails();
-            	Book book = new Book("Effective Java", "Programming", 45.0f, Arrays.asList("Joshua Bloch"));
-            	store.addMedia(book);
-                // Assume we have predefined media objects to add to the store
-                // store.addMedia(new Media(...)); or similar logic
+            case 1: 
+            	addMediaToStore(scanner);
                 break;
             case 2: // Remove media
                 // Similar logic to remove media from the store
-            	store.removeMedia(book);
+            	removeMediaFromStore(scanner);
                 break;
             case 0: // Back
                 return;
@@ -237,19 +250,14 @@ public class Aims {
                         System.out.println("Invalid choice.");
                     }
                     break;
-                case 3: // Remove media from cart
-                    System.out.print("Enter media title to remove: ");
-                    String titleToRemove = scanner.nextLine();
                     
-                    //de tam o day
-                    Book book = new Book("Effective Java", "Programming", 45.0f, Arrays.asList("Joshua Bloch"));
-                    //thay bang ham remove bang name chu ko phai obj
-                    cart.removeMedia(book);
+                case 3: // Remove media from cart
+                    removeMediaFromCart(scanner);
                     break;
                 case 4: // Play a media
                     System.out.print("Enter media title to play: ");
                     String playTitle = scanner.nextLine();
-                    Media media = cart.search(playTitle);
+                    cart.search(playTitle);
                     break;
                     
                 case 5: // Place order
@@ -262,6 +270,175 @@ public class Aims {
                     System.out.println("Invalid choice.");
             }
         }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    public static void addMediaToStore(Scanner scanner) {
+        System.out.println("Enter the type of media (Book/DVD/CD): ");
+        String type = scanner.nextLine().trim();
+
+        String title = getTitle(scanner);
+        String category = getCategory(scanner);
+        float cost = getCost(scanner);
+
+        switch (type.toLowerCase()) {
+            case "book":
+                System.out.print("Enter authors (comma-separated): ");
+                String[] authors = scanner.nextLine().split(",");
+                store.addMedia(new Book(title, category, cost, Arrays.asList(authors)));
+                break;
+                
+            case "dvd":
+                System.out.print("Enter director: ");
+                String dvdDirector = scanner.nextLine();
+                System.out.print("Enter length: ");
+                int dvdLength = scanner.nextInt();
+                scanner.nextLine(); // Consume newline
+                store.addMedia(new DigitalVideoDisc(title, category, cost, dvdDirector, dvdLength));
+                break;
+                
+            case "cd":
+            	System.out.print("Enter director: ");
+                String cdDirector = scanner.nextLine();
+                scanner.nextLine(); // Consume newline
+                
+                System.out.print("Enter artist: ");
+                String artist = scanner.nextLine();
+
+                System.out.print("Enter number of tracks: ");
+                int trackCount = scanner.nextInt();
+                scanner.nextLine(); // Consume newline
+
+                CompactDisc cd = new CompactDisc(title, category, cost, artist, cdDirector , 0);
+
+                for (int i = 1; i <= trackCount; i++) {
+                    System.out.println("Enter details for track " + i + ":");
+                    System.out.print("Track name: ");
+                    String trackName = scanner.nextLine();
+
+                    System.out.print("Track length (in seconds): ");
+                    int trackLength = scanner.nextInt();
+                    scanner.nextLine(); // Consume newline
+
+                    cd.addTrack(new Track(trackName.trim(), trackLength));
+                }
+
+                store.addMedia(cd);
+                System.out.println("CD added to the store successfully!");
+                break;
+            default:
+                System.out.println("Invalid media type.");
+        }
+    }
+    
+    public static void removeMediaFromStore(Scanner scanner) {
+        String title = getTitle(scanner);
+        Media media = store.search(title);
+
+        if (media != null) {
+            store.removeMedia(media);
+            System.out.println("Media removed successfully.");
+        } else {
+            System.out.println("Media not found in store.");
+        }
+    }
+    
+    public static void addMediaToCart(Scanner scanner) {
+        System.out.println("Enter the type of media (Book/DVD/CD): ");
+        String type = scanner.nextLine().trim();
+
+        String title = getTitle(scanner);
+        String category = getCategory(scanner);
+        float cost = getCost(scanner);
+
+        switch (type.toLowerCase()) {
+            case "book":
+                System.out.print("Enter authors (comma-separated): ");
+                String[] authors = scanner.nextLine().split(",");
+                cart.addMedia(new Book(title, category, cost, Arrays.asList(authors)));
+                break;
+                
+            case "dvd":
+                System.out.print("Enter director: ");
+                String dvdDirector = scanner.nextLine();
+                System.out.print("Enter length: ");
+                int dvdLength = scanner.nextInt();
+                scanner.nextLine(); // Consume newline
+                cart.addMedia(new DigitalVideoDisc(title, category, cost, dvdDirector, dvdLength));
+                break;
+                
+            case "cd":
+            	System.out.print("Enter director: ");
+                String cdDirector = scanner.nextLine();
+                scanner.nextLine(); // Consume newline
+                
+                System.out.print("Enter artist: ");
+                String artist = scanner.nextLine();
+
+                System.out.print("Enter number of tracks: ");
+                int trackCount = scanner.nextInt();
+                scanner.nextLine(); // Consume newline
+
+                CompactDisc cd = new CompactDisc(title, category, cost, artist, cdDirector , 0);
+
+                for (int i = 1; i <= trackCount; i++) {
+                    System.out.println("Enter details for track " + i + ":");
+                    System.out.print("Track name: ");
+                    String trackName = scanner.nextLine();
+
+                    System.out.print("Track length (in seconds): ");
+                    int trackLength = scanner.nextInt();
+                    scanner.nextLine(); // Consume newline
+
+                    cd.addTrack(new Track(trackName.trim(), trackLength));
+                }
+
+                cart.addMedia(cd);
+                System.out.println("CD added to the cart successfully!");
+                break;
+            default:
+                System.out.println("Invalid media type.");
+        }
+    }
+    
+    
+    public static void removeMediaFromCart(Scanner scanner) {
+        String title = getTitle(scanner);
+        Media media = cart.search(title);
+
+        if (media != null) {
+            cart.removeMedia(media);
+            System.out.println("Media removed successfully.");
+        } else {
+            System.out.println("Media not found in cart.");
+        }
+    }
+    
+    public static String getTitle(Scanner scanner) {
+        System.out.print("Enter title: ");
+        return scanner.nextLine();
+    }
+
+    public static String getCategory(Scanner scanner) {
+        System.out.print("Enter category: ");
+        return scanner.nextLine();
+    }
+
+    public static float getCost(Scanner scanner) {
+        System.out.print("Enter cost: ");
+        while (!scanner.hasNextFloat()) {
+            System.out.println("Invalid input. Please enter a valid number for cost.");
+            scanner.next(); // Consume invalid input
+        }
+        float cost = scanner.nextFloat();
+        scanner.nextLine(); // Consume newline
+        return cost;
     }
     
 }
